@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "chat app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hrishikesh2708/HTchat.git"
+  },
+  "keywords": [
+    "chat"
+  ],
+  "author": "Hrishikesh M Thkaur",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hrishikesh2708/HTchat/issues"
+  },
+  "homepage": "https://github.com/hrishikesh2708/HTchat#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
