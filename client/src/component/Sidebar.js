@@ -6,9 +6,22 @@ import MessageIcon from "@material-ui/icons/Message";
 import SearchIcon from "@material-ui/icons/Search";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SidebarChat from "./SidebarChat";
+import db from "../firebase";
 // import addChat from "./SidebarChat";
 
 function Sidebar() {
+  const [room, setRoom] =React.useState([])
+  React.useEffect(() => {
+    const unsubscribe = db.collection("rooms").onSnapshot( snapshot => (
+      setRoom(snapshot.docs.map(doc => ({
+        id: doc.id,
+        data: doc.data(),
+      })))
+    ))
+    return () => {
+      unsubscribe();
+    }
+  }, [])
   return (
     <div className="sidebar">
       <div className="sidebar__header">
@@ -33,9 +46,9 @@ function Sidebar() {
       </div>
       <div className="sidebar__chat">
       <SidebarChat addChat/>
-      <SidebarChat/>
-      <SidebarChat/>
-      <SidebarChat/>
+      {room.map(room => (
+        <SidebarChat key={room.id} id={room.id} name={room.data.name}/>
+      ))}
       </div>
     </div>
   );
